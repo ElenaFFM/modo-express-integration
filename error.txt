@@ -1,1 +1,1 @@
-Request failed with status code 400
+BASE_URL_MODO is not defined
