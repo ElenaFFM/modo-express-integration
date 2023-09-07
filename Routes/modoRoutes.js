@@ -1,8 +1,9 @@
 const express = require('express');
-const modoController = require("");
+const modoController = require("../Controllers/modoController.js");
 
 const router = express.Router();
 
-router.route('/api/modo-checkout').post(modoController)
+router.route('/')
+    .post(modoController.createPaymentInt)
 
 module.exports = router;
