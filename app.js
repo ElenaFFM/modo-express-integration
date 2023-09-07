@@ -1,6 +1,7 @@
 const express = require("express");
 const { port } = require("./config");
 const morgan = require('morgan');
+const modoRouter = require('./Routes/modoRoutes');
 
 
 
@@ -8,6 +9,7 @@ const fs = require("fs");
 const { default: axios } = require("axios");
 
 const app = express();
+
 app.use(express.json());
 
 
