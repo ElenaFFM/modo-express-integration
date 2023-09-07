@@ -1,5 +1,4 @@
 const dotenv = require('dotenv');
-const fs = require('fs');
 const { default: axios } = require("axios");
 
 dotenv.config({ path: './config.env' });
@@ -50,14 +49,6 @@ exports.createPaymentIntention = async (req) => {
 
 
     } catch (error) {
-
-        fs.writeFile('./error.txt', error.message, (err) => {
-            if (err) {
-                console.error('Error al escribir en el archivo:', err);
-            } else {
-                console.error('Error guardado en error.txt');
-            }
-        });
 
         return {
             status: 500,
