@@ -1,7 +1,7 @@
 const express = require("express");
-const dotenv = require('dotenv');
+require('dotenv').config();
+
 const fs = require('fs');
-dotenv.config({ path: './config.env' });
 
 const { default: axios } = require("axios");
 
@@ -37,10 +37,10 @@ app.post('/api/modo-checkout', async (req, res) => {
     res.status(status).json(data);
 });
 
-// const BASE_URL_MODO = 'https://merchants.playdigital.com.ar';
-// const STORE_ID = '{STORE_ID}';
-// const CLIENT_ID = '{CLIENT_ID}';
-// const CLIENT_SECRET = '{CLIENT_SECRET}';
+// const BASE_URL_MODO = 'https://merchants.preprod.playdigital.com.ar'
+// const STORE_ID = '59540937-2423-4eec-a0c4-b4bf73216abd'
+// const CLIENT_ID = 'calmpreprod'
+// const CLIENT_SECRET = 'calmpreprod'
 
 
 // Create Payment Intention
@@ -50,6 +50,7 @@ const createPaymentIntention = async (req) => {
         id: 123,
     };
 
+    console.log(process.env.BASE_URL_MODO);
     try {
 
         const accessToken = await generateAccessToken();
@@ -97,10 +98,11 @@ const createPaymentIntention = async (req) => {
 
 // Create Access Token
 const generateAccessToken = async () => {
-    const response = await axios.post(`${BASE_URL_MODO}/merchants/middleman/token`,
+    console.log(process.env.BASE_URL_MODO);
+    const response = await axios.post(`${process.env.BASE_URL_MODO}/merchants/middleman/token`,
         {
-            username: CLIENT_ID,
-            password: CLIENT_SECRET,
+            username: process.env.CLIENT_ID,
+            password: process.env.CLIENT_SECRET,
         },
         { headers: { 'Content-Type': 'application/json' } });
     return response.data.accessToken;
