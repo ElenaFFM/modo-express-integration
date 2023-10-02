@@ -1,4 +1,4 @@
-const { createPaymentIntention } = require("../services/modoServices");
+const { createPaymentIntention } = require("../Services/modoServices");
 
 exports.createPaymentInt = async (req, res) => {
     try {
